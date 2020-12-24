@@ -1,0 +1,17 @@
+\section*{Regression}
+
+Solve $w^* = \underset{w}{\operatorname{argmin}} ~ \hat{R}(w)+ \lambda C(w)$
+
+\subsection*{Linear Regression}
+if $X^T X$ is invertible, $w^*$ is unique. If $n<d$, no unique solution. If $n>d$, $X$ should be fullrank (all singular values are non-zero).
+$\hat{R}(w) = \sum_{i=1}^n (y_i - w^Tx_i)^2 = ||Xw-y||^2_2\\
+\nabla_w \hat{R}(w) = -2 \sum_{i=1}^n (y_i-w^T x_i) \cdot x_i \\
+w^* = (X^T X)^{-1} X^T y$
+
+
+\subsection*{Ridge regression}
+Unique solution.(even for $n<d$). 
+$\hat{R}(w) = \sum_{i=1}^n (y_i - w^Tx_i)^2 + \lambda ||w||_2^2$\\
+$\nabla_w \hat{R}(w) = -2 \sum_{i=1}^n (y_i-w^T x_i) \cdot x_i + 2 \lambda w$\\
+$w^*=(X^T X + \lambda I)^{-1} X^T y$. SGD update: $(1 - 2\lambda \eta_t) w_t - \eta_t \bigtriangledown_w \hat{R}(w_t)  $
+both lasso and ridge have convex loss. 

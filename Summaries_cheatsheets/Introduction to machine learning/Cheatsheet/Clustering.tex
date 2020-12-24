@@ -1,0 +1,11 @@
+\section*{Clustering}
+\subsection*{k-means}
+
+$\hat{R}(\mu) = \sum_{i=1}^n \underset{j\in\{1,...k\}}{\operatorname{min}}||x_i-\mu_j||_2^2$\\
+$\hat{\mu} =  \underset{\mu}{\operatorname{argmin}} ~ \hat{R}(\mu)$ ...non-convex, NP-hard \\
+Algorithm (Lloyd's heuristic): Choose starting centers, assign points to closest \emph{center}, update centers to mean of each cluster, repeat. It always converges ($\mathbb{O}(nkd)$) even though could be exponentially.
+Can't use cross-validation to determine $\#$clusters. What to use? Prior knowledge, Elbow, Regularization. 
+
+\subsection*{k-means++}
+Have samples from the clusters that you don't have sample yet, and sample more from the big classes. Sample points proportionally to the squared distance to the closest selected center. 
+Expected cost is $\mathbb{O}(log k)$ times that of optimal K-means solution. 
